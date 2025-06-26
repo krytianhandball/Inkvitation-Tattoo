@@ -1,0 +1,172 @@
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inkvitation Tattoo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(135deg, #00ff00, #ffff00) 1;
+    }
+
+    .logo {
+      height: 100px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://inkvitationtattoo.net/wp-content/uploads/2022/10/inkvitation-background-scaled.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #fefefe;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+
+    .hero p {
+      max-width: 800px;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .hero-buttons a {
+      background: linear-gradient(135deg, #00ff00, #ffff00);
+      color: #000;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .hero-buttons a:hover {
+      transform: scale(1.05);
+    }
+
+    .page {
+      display: none;
+      padding: 2rem;
+    }
+
+    #booking-page iframe {
+      width: 100%;
+      height: 650px;
+      border: none;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="ink-logo.jpg" alt="Inkvitation Tattoo Logo" class="logo">
+    <nav>
+      <a onclick="navigateTo('home')">Home</a>
+      <a onclick="navigateTo('booking')">Booking</a>
+      <a onclick="navigateTo('gallery')">Gallery</a>
+      <a onclick="navigateTo('about')">About Us</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home-page">
+    <h1>Welcome to Inkvitation Tattoo</h1>
+    <div class="hero-buttons">
+      <a onclick="navigateTo('booking')">Book Now</a>
+      <a onclick="navigateTo('booking')">Find out what session you need</a>
+    </div>
+    <p>
+      Feeling like getting a tattoo, huh? Well, here's where ​your adventure begins, supposedly addictive, so be ​careful 😉<br><br>
+      Alright, but how do you go about it? The most ​important thing is the idea. You have to remember ​that a tattoo will stay with you for your whole life, so ​it's worth thinking about the theme, style, and
+    </p>
+  </section>
+
+  <section id="booking-page" class="page">
+    <h1>Book a Session</h1>
+    <div id="calendly-container">
+      <iframe src="https://calendly.com/krystianjankowski107" title="Calendly Booking Widget"></iframe>
+    </div>
+  </section>
+
+  <section id="gallery-page" class="page">
+    <h1>Gallery</h1>
+    <p>Gallery content coming soon...</p>
+  </section>
+
+  <section id="about-page" class="page">
+    <h1>About Us</h1>
+    <div class="about-content">
+      <p>Inkvitation Tattoo is an intimate ​tattoo studio located in the ​charming town of Ballinasloe. It ​has been open and operated ​since 2023 by the skilled artist ​Łukasz Konsek, also known as ​Kons.</p>
+      <br>
+      <p>Kons is a passionate tattoo artist who began his career in ​2009. With valuable experience gained from working in various ​studios, he eventually fulfilled his dream of owning his own ​Inkvitation Tattoo studio. Despite his modesty, Kons has ​garnered numerous awards over the years, showcasing his ​undeniable artistic skills and knowledge. This has made him a ​sought-after choice among clients from the entire region. If you ​are looking for a place where professionalism and passion blend ​with subtlety and aesthetics.</p>
+    </div>
+  </section>
+
+  <script>
+    function navigateTo(page) {
+      const pages = ['home-page', 'booking-page', 'gallery-page', 'about-page'];
+      pages.forEach(p => document.getElementById(p).style.display = 'none');
+
+      if (page === 'home') {
+        document.getElementById('home-page').style.display = 'flex';
+      } else {
+        document.getElementById(`${page}-page`).style.display = 'block';
+      }
+    }
+
+    // Show home page by default
+    navigateTo('home');
+  </script>
+
+
+</body></html>
