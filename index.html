@@ -1,8 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inkvitation Tattoo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -11,7 +16,9 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: "Limelight", sans-serif;
+      font-weight: 400;
+      font-style: normal;
       background-color: #111;
       color: #fff;
     }
@@ -51,6 +58,25 @@
       background: url('https://inkvitationtattoo.net/wp-content/uploads/2022/10/inkvitation-background-scaled.jpg') center/cover no-repeat;
       text-align: center;
       padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExejl3NjU5Y2JwajFqa3B1enBqNnY4ZWdibWVrdHV3c3hiYTR0NTlkOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hnhNHK69bdsoo/giphy.gif') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    .hero * {
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -68,6 +94,7 @@
     }
 
     .hero-buttons {
+      margin-top: 1em;
       display: flex;
       gap: 1.5rem;
     }
@@ -121,14 +148,22 @@
 
   <section class="hero" id="home-page">
     <h1>Welcome to Inkvitation Tattoo</h1>
-    <div class="hero-buttons">
-      <a onclick="navigateTo('booking')">Book Now</a>
-      <a onclick="navigateTo('booking')">Find out what session you need</a>
-    </div>
     <p>
       Feeling like getting a tattoo, huh? Well, here's where ​your adventure begins, supposedly addictive, so be ​careful 😉<br><br>
       Alright, but how do you go about it? The most ​important thing is the idea. You have to remember ​that a tattoo will stay with you for your whole life, so ​it's worth thinking about the theme, style, and
     </p>
+    <p>
+      If you know what you are looking for - book one of your sessions today!
+    </p>
+    <div class="hero-buttons">
+      <a onclick="navigateTo('booking')">Book Now</a>
+    </div>
+    <p>
+      If you need help deciding, use our helper form which will guide you in your decision. Don't worry if you are not sure you can send me a message! 
+    </p>
+    <div class="hero-buttons">
+      <a onclick="navigateTo('booking')">Find out what session you need</a>
+    </div>
   </section>
 
   <section id="booking-page" class="page">
@@ -147,7 +182,7 @@
     <h1>About Us</h1>
     <div class="about-content">
       <p>Inkvitation Tattoo is an intimate ​tattoo studio located in the ​charming town of Ballinasloe. It ​has been open and operated ​since 2023 by the skilled artist ​Łukasz Konsek, also known as ​Kons.</p>
-      <br>
+      <br />
       <p>Kons is a passionate tattoo artist who began his career in ​2009. With valuable experience gained from working in various ​studios, he eventually fulfilled his dream of owning his own ​Inkvitation Tattoo studio. Despite his modesty, Kons has ​garnered numerous awards over the years, showcasing his ​undeniable artistic skills and knowledge. This has made him a ​sought-after choice among clients from the entire region. If you ​are looking for a place where professionalism and passion blend ​with subtlety and aesthetics.</p>
     </div>
   </section>
@@ -167,6 +202,5 @@
     // Show home page by default
     navigateTo('home');
   </script>
-
-
-</body></html>
+</body>
+</html>
