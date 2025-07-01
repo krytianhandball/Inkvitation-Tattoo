@@ -38,6 +38,51 @@
       border-image: linear-gradient(135deg, #099e09, #dada07) 1;
     }
 
+    /* Mobile menu toggle button (hamburger) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Responsive nav */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: #000;
+        padding: 1rem 2rem;
+        position: absolute;
+        top: 100px; /* below the logo */
+        right: 0;
+        width: 100%;
+        z-index: 10;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      header {
+        position: relative;
+        flex-wrap: wrap;
+      }
+    }
+
+
     .logo {
       height: 100px;
     }
@@ -68,16 +113,16 @@
     }
 
     .hero {
-      height: 90vh;
+      height: 100%;
+      min-height: 1000px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background: url('https://inkvitationtattoo.net/wp-content/uploads/2022/10/inkvitation-background-scaled.jpg') center/cover no-repeat;
       text-align: center;
-      padding: 2rem;
       position: relative;
-      overflow: hidden;
+      padding: 1em;
     }
 
     .hero::before {
@@ -101,7 +146,7 @@
       border-bottom: 2px solid;
       border-image: linear-gradient(135deg, #099e09, #dada07) 1;
       height: 2px;
-      width: 770px;
+      width: 80%
     }
 
     .hero h1 {
@@ -122,6 +167,8 @@
       min-width: 300px;
       margin-top: 1em;
       display: flex;
+      flex-direction: row;
+      justify-content: center;
       gap: 1.5rem;
     }
 
@@ -162,10 +209,17 @@
 
      .about-content {
       display: flex;
-      max-width: 1000px;
+      flex-direction: column;
       margin: 0 auto;
       gap: 2rem;
       align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+      }
     }
 
     .about-image {
@@ -173,8 +227,9 @@
     }
 
     .about-image img {
+      width: 100%;
+      height: auto;
       max-width: 621px;
-      height: 742px;
       border-radius: 10px;
     }
 
@@ -183,8 +238,8 @@
     }
 
     .contact-image img {
-      max-width: 771px;
-      height: 742px;
+      height: 500px;
+      max-width: 621px;
       border-radius: 10px;
     }
 
@@ -192,6 +247,9 @@
       flex: 2;
       line-height: 1.6;
       font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
      .carousel-container {
@@ -201,68 +259,88 @@
       overflow: hidden;
     }
 
-    .carousel-track {
+    .gallery {
+      padding: 4rem 2rem;
       display: flex;
-      width: 500%;
-      height: 100%;
-      animation: slide 25s infinite;
+     flex-direction: column;
+     align-items: center;
     }
 
-    .carousel-slide {
-      width: 50vw;
-      height: 100vh;
-      flex-shrink: 0;
+    .gallery h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    .carousel-slide img {
+    .gallery-grid {
+       display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+        gap: 1.5rem; /* space between images */
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-grid img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
     }
 
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(0); }
-      25% { transform: translateX(-100vw); }
-      45% { transform: translateX(-100vw); }
-      50% { transform: translateX(-200vw); }
-      70% { transform: translateX(-200vw); }
-      75% { transform: translateX(-300vw); }
-      95% { transform: translateX(-400vw); }
-      100% { transform: translateX(0); }
+    .gallery-grid img:hover {
+      transform: scale(1.1);
+      z-index: 1;
+      position: relative;
     }
   </style>
 </head>
 <body>
   <header>
     <img src="ink-logo.jpg" alt="Inkvitation Tattoo Logo" class="logo">
-    <nav>
-      <a onclick="navigateTo('home')">Home</a>
-      <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
-      <a onclick="navigateTo('gallery')">Gallery</a>
-      <a onclick="navigateTo('about')">About Us</a>
-      <a onclick="navigateTo('contact')">Contact Us</a>
-      <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center; margin-left:1.5rem;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
-      </a>
-    </nav>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="main-nav">
+        <a onclick="navigateTo('home')">Home</a>
+        <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
+        <a onclick="navigateTo('gallery')">Gallery</a>
+        <a onclick="navigateTo('contact')">Contact Us</a>
+        <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
+        </a>
+  </nav>
   </header>
 
   <section class="hero" id="home-page">
-    <h1>Welcome to Inkvitation Tattoo</h1>
-    <p>
-      With over 20 years of experience, Kons delivers tattoos with precision, creativity, and unmatched attention to detail. Whether you're starting your journey or continuing a personal story through ink, you're in the right place.
-    </p>
-    <p>
-     We specialise in every style — from fine line, realism, and bold traditional to abstract elements. Kons is especially known for lifelike face tattoos, seamless cover-ups, and full sleeve designs that blend form with flow.
-    </p>
-    <p>
-     Whether you want something small and meaningful or a large, complex piece, you'll receive a fully personalised experience, crafted with skill and care.
-    </p>
-    <br>
-    <br>
-    <div class="hero-buttons">
-      <a onclick="navigateTo('booking')">Book Now</a>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="profile-pic" alt="Tattoo Artist">
+      </div>
+      <div class="about-text">
+        <h1>Welcome to Inkvitation Tattoo</h1>
+        <p>Inkvitation Tattoo is an intimate tattoo studio located in the charming town of Ballinasloe. It has been open and operated since 2023 by the skilled artist Łukasz Konsek, also known as Kons.</p>
+        <br />
+        <p>Kons is a passionate tattoo artist who began his career in 2009. With valuable experience gained from working in various studios, he eventually fulfilled his dream of owning his own Inkvitation Tattoo studio.</p>
+        <br />
+        <p> Despite his modesty, Kons has garnered numerous awards over the years, showcasing his undeniable artistic skills and knowledge. This has made him a sought-after choice among clients from the entire region. If you are looking for a place where professionalism and passion blend with subtlety and aesthetics, you've come to the right place.</p>
+        <div class="hero-buttons">
+          <a onclick="navigateTo('booking')">Book Now</a>
+        </div>
+      </div>
     </div>
     <br>
     <br>
@@ -274,13 +352,45 @@
     <br>
     <h2>Not sure what you need?</h2>
     <p>
-      Choosing the right session can be overwhelming — full piece, touch-up, cover-up, or consultation? We can help guide you.
+      Feeling like getting a tattoo, huh? Well, here's where ​your adventure begins, supposedly addictive, so be ​careful 😉
+    </p>
+    <p>
+      Alright, but how do you go about it? The most ​important thing is the idea. You have to remember ​that a tattoo will stay with you for your whole life, so ​it's worth thinking about the theme, style, and ​placement.
+    </p>
+    <p>
+      If you have any doubts, questions, or need  ​additional information, we can always chat. Swing by ​the studio, shoot an email, or drop me a message on ​WhatsApp or Messenger.
     </p>
     <br>
     <br>
     <div class="hero-buttons">
       <a onclick="navigateTo('booking')">Find out what session you need</a>
     </div>
+     <br>
+    <br>
+    <br>
+    <div class="break-line">
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2>Hygiene and Safety</h2>
+    <p>
+      At <strong>INKVITATION TATTOO</strong>, we not only prioritize safety but also ​guarantee that your tattoo experience will be absolutely WOW! We use ​only single-use needles and top-quality tools, and our inks ensure colors ​that leave an impression. 😉
+    </p>
+    <p>
+      When it comes to aftercare, we also offer professional tattoo care products ​for sale. There's no room for cookie-cutter tattoos here – we create ​customized works of art tailored to your dreams. Forget about copying! ​Each tattoo with us is a unique masterpiece crafted especially for you.
+    </p>
+    <p>
+      If you have old tattoos that you're not fond of anymore, don't stress! We ​cover up old designs with brand-new ones, so you can fall in love with ​your skin all over again.
+    </p>
+    <p>
+      Thinking about a special someone? We've got you covered. Gift them a <strong>​GIFT VOUCHER.</strong>
+    </p>
+    <p>
+      All of this takes place in a studio with the highest, most cutting-edge ​standards. Just come in, relax, and let us turn your tattoo dreams into ​reality!
+    </p>
+    <br>
+    <h2>Experience and Professionalism</h2>
   </section>
 
   <section id="booking-page" class="hero">
@@ -289,33 +399,20 @@
     </div>
   </section>
 
-  <section id="gallery-page" class="hero">
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-slide"><img src="pic1.jpg" alt="Tattoo 1"></div>
-        <div class="carousel-slide"><img src="pic2.jpg" alt="Tattoo 2"></div>
-        <div class="carousel-slide"><img src="pic3.jpg" alt="Tattoo 3"></div>
-        <div class="carousel-slide"><img src="pic4.jpg" alt="Tattoo 4"></div>
-        <div class="carousel-slide"><img src="pic5.jpg" alt="Tattoo 5"></div>
-        <div class="carousel-slide"><img src="piv6.jpg" alt="Tattoo 6"></div>
-      </div>
+  <section id="gallery-page" class="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <img src="pic1.jpg" alt="Tattoo 1" />
+      <img src="pic2.jpg" alt="Tattoo 2" />
+      <img src="pic3.jpg" alt="Tattoo 3" />
+      <img src="pic4.jpg" alt="Tattoo 4" />
+      <img src="pic5.jpg" alt="Tattoo 5" />
+      <img src="piv6.jpg" alt="Tattoo 6" />
     </div>
   </section>
 
   <section id="about-page" class="hero">
-     <div class="about-content">
-      <div class="about-image">
-        <img src="profile-pic" alt="Tattoo Artist">
-      </div>
-      <div class="about-text">
-        <h1>About Us</h1>
-        <p>Inkvitation Tattoo is an intimate tattoo studio located in the charming town of Ballinasloe. It has been open and operated since 2023 by the skilled artist Łukasz Konsek, also known as Kons.</p>
-        <br />
-        <p>Kons is a passionate tattoo artist who began his career in 2009. With valuable experience gained from working in various studios, he eventually fulfilled his dream of owning his own Inkvitation Tattoo studio.</p>
-        <br />
-        <p> Despite his modesty, Kons has garnered numerous awards over the years, showcasing his undeniable artistic skills and knowledge. This has made him a sought-after choice among clients from the entire region. If you are looking for a place where professionalism and passion blend with subtlety and aesthetics, you've come to the right place.</p>
-      </div>
-    </div>
+    
   </section>
 
    <section id="contact-page" class="hero">
@@ -344,6 +441,10 @@
   </section>
 
   <script>
+     function toggleMenu() {
+        document.getElementById('main-nav').classList.toggle('active');
+    }
+
     function navigateTo(page) {
       const pages = ['home-page', 'booking-page', 'gallery-page', 'about-page', 'contact-page'];
       pages.forEach(p => document.getElementById(p).style.display = 'none');
