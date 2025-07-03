@@ -156,6 +156,13 @@
       text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
     }
 
+    .gallery h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #fefefe;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+
     .hero p {
       max-width: 800px;
       font-size: 1.1rem;
@@ -292,7 +299,7 @@
     }
 
     .gallery-grid img {
-      width: 100%;
+      width: 90%;
       height: auto;
       border-radius: 10px;
       transition: transform 0.3s ease;
@@ -318,6 +325,7 @@
         <a onclick="navigateTo('home')">Home</a>
         <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
         <a onclick="navigateTo('gallery')">Gallery</a>
+        <a onclick="navigateTo('about')">Hygiene and Safety</a>
         <a onclick="navigateTo('contact')">Contact Us</a>
         <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center;">
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
@@ -368,12 +376,28 @@
      <br>
     <br>
     <br>
-    <div class="break-line">
+  </section>
+
+  <section id="booking-page" class="hero">
+    <h1>Book a Session</h1>
+    <div id="calendly-container" class="bookin-container">
     </div>
-    <br>
-    <br>
-    <br>
-    <h2>Hygiene and Safety</h2>
+  </section>
+
+  <section id="gallery-page" class="gallery">
+    <h1>Gallery</h1>
+    <div class="gallery-grid">
+      <img src="pic1.jpg" alt="Tattoo 1" />
+      <img src="pic2.jpg" alt="Tattoo 2" />
+      <img src="pic3.jpg" alt="Tattoo 3" />
+      <img src="pic4.jpg" alt="Tattoo 4" />
+      <img src="pic5.jpg" alt="Tattoo 5" />
+      <img src="piv6.jpg" alt="Tattoo 6" />
+    </div>
+  </section>
+
+  <section id="about-page" class="hero">
+    <h1>Hygiene and Safety</h1>
     <p>
       At <strong>INKVITATION TATTOO</strong>, we not only prioritize safety but also ​guarantee that your tattoo experience will be absolutely WOW! We use ​only single-use needles and top-quality tools, and our inks ensure colors ​that leave an impression. 😉
     </p>
@@ -390,29 +414,6 @@
       All of this takes place in a studio with the highest, most cutting-edge ​standards. Just come in, relax, and let us turn your tattoo dreams into ​reality!
     </p>
     <br>
-    <h2>Experience and Professionalism</h2>
-  </section>
-
-  <section id="booking-page" class="hero">
-    <h1>Book a Session</h1>
-    <div id="calendly-container" class="bookin-container">
-    </div>
-  </section>
-
-  <section id="gallery-page" class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <img src="pic1.jpg" alt="Tattoo 1" />
-      <img src="pic2.jpg" alt="Tattoo 2" />
-      <img src="pic3.jpg" alt="Tattoo 3" />
-      <img src="pic4.jpg" alt="Tattoo 4" />
-      <img src="pic5.jpg" alt="Tattoo 5" />
-      <img src="piv6.jpg" alt="Tattoo 6" />
-    </div>
-  </section>
-
-  <section id="about-page" class="hero">
-    
   </section>
 
    <section id="contact-page" class="hero">
@@ -455,8 +456,6 @@
         document.getElementById(`${page}-page`).style.display = 'flex';
       }
     }
-
-    // Show home page by default
     navigateTo('home');
   </script>
 </body>
