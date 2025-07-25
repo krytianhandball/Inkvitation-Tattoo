@@ -329,11 +329,13 @@
       border-image: linear-gradient(135deg, #099e09, #dada07) 1;
       background-color: #1e1e1e;
       padding: 40px 20px;
-      text-align: center;
       font-family: 'Montserrat', sans-serif;
     }
 
     .site-footer .footer-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -349,10 +351,30 @@
     }
     .step.active { 
       display: flex; 
-      height: 500px;
       justify-content: space-evenly;
       flex-direction: column;
     }
+
+    .button-next {
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .questionnaire {
+        padding: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .button-container {
+        flex-direction: column;
+      }
+
+      .button-container button {
+        width: 100%;
+      }
+    }
+
+
     .button-container { 
       margin-top: 20px; 
       text-align: right; 
@@ -373,9 +395,6 @@
 
     /* Hide the default radio button */
     input[type="radio"] {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       width: 20px;
       height: 20px;
       border: 2px solid #333;
@@ -387,32 +406,6 @@
       margin-right: 10px;
       cursor: pointer;
       transition: border-color 0.3s ease, background-color 0.3s ease;
-    }
-
-    /* Create the inner dot when selected */
-    input[type="radio"]::before {
-      content: '';
-      width: 10px;
-      height: 10px;
-      background-color: #333;
-      border-radius: 50%;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    /* Show inner dot on checked */
-    input[type="radio"]:checked::before {
-      opacity: 1;
-    }
-
-    /* Optional hover/focus style */
-    input[type="radio"]:hover,
-    input[type="radio"]:focus {
-      border-color: #000;
-      outline: none;
     }
 
     /* Label spacing */
@@ -436,14 +429,11 @@
 
       <nav id="main-nav">
         <a onclick="navigateTo('home')">Home</a>
-        <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
         <a onclick="navigateTo('gallery')">Gallery</a>
-        <a onclick="navigateTo('questionnaire')">Session Type</a>
         <a onclick="navigateTo('about')">Hygiene and Safety</a>
         <a onclick="navigateTo('contact')">Contact Us</a>
-        <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
-        </a>
+        <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
+        <a onclick="navigateTo('questionnaire')"  class="book-now-button">Find your session</a>
   </nav>
   </header>
 
@@ -512,7 +502,7 @@
     <label><input type="radio" name="q1" value="new"> New tattoo</label><br>
     <label><input type="radio" name="q1" value="coverup"> Cover-up</label>
     <div class="button-container hero-buttons">
-      <button onclick="handleQ1()">Next</button>
+      <button onclick="handleQ1()"  class="button-next">Next</button>
     </div>
   </div>
 
@@ -520,7 +510,10 @@
     <p><strong>Cover-ups are booked individually.</strong></p>
     <p>Please email me with a photo of your current tattoo, describe your idea, and – if you'd like – include reference images of what inspires you.</p>
     <p>I’ll get back to you within <strong>72 hours</strong>.</p>
-    <p>✉️ <a href="mailto:inkvitationtattoo@gmail.com">inkvitationtattoo@gmail.com</a></p>
+    <p><a href="mailto:inkvitationtattoo@gmail.com">inkvitationtattoo@gmail.com</a></p>
+    <div class="hero-buttons">
+      <button onclick="startOver()">Start Over</button>
+    </div>
   </div>
 
   <div id="step2" class="step">
@@ -529,7 +522,8 @@
     <label><input type="radio" name="q2" value="help"> I'm not sure – I need help deciding</label><br>
     <label><input type="radio" name="q2" value="know"> I know – I want to choose a session</label>
     <div class="button-container hero-buttons">
-      <button onclick="handleQ2()">Next</button>
+      <button onclick="startOver()">Start Over</button>
+      <button onclick="handleQ2()" class="button-next">Next</button>
     </div>
   </div>
 
@@ -539,7 +533,8 @@
     <label><input type="radio" name="q3" value="no"> No – e.g. sleeve, full back, large project</label><br>
     <label><input type="radio" name="q3" value="unsure"> I'm not sure</label>
     <div class="button-container hero-buttons">
-      <button onclick="handleQ3()">Next</button>
+      <button onclick="startOver()">Start Over</button>
+      <button onclick="handleQ3()" class="button-next" >Next</button>
     </div>
   </div>
 
@@ -547,17 +542,24 @@
     <p>For larger projects – like sleeves, full backs or legs – you’ll usually need several sessions (e.g. 4–6).</p>
     <p>You can book multiple dates in advance. We’ll go over everything during the consultation before we begin.</p>
     <div class="button-container hero-buttons">
-      <button onclick="showStep('step4')">Next</button>
+      <button onclick="startOver()">Start Over</button>
+      <button onclick="showStep('step4')" class="button-next">Next</button>
     </div>
   </div>
 
   <div id="step4" class="step">
-    <h2>Select the session you'd like to book</h2><br>
-    <label><input type="radio" name="q4" value="half"> Half session – 3–4 hours – €300 (Mon–Thu)</label><br>
-    <label><input type="radio" name="q4" value="full"> Full session – 6 hours – €500 (Mon–Thu)</label>
-    <p>Deposit: €100</p>
+    <h2>Select the session you'd like to book during the booking process.</h2><br>
+    <p>Half session – This slot is perfect for medium-sized pieces that don't need a full day. It covers approx. 3 hours of time, including everything from prep to wrap-up. Keep in mind that actual tattooing time may be shorter, depending on the design and other factors. Available Monday to Thursday.</p>
+    <br>
+    <p>Full session – Book for a full day sesion. This is a full-day booking slot reserved for larger projects that require more time and focus. It includes preparation, breaks, setup, and actual tattooing. The total time booked is approx. 6 hours, but the exact duration can vary depending on the design and flow of the session. This option is available Monday to Thursday</p>
+    <br>
+    <p>Deposit: €100 - The doposit is taken during booking process and guarantees the date to be booked. The total cost depends on the tattoo itself.</p>
     <p>After choosing, you’ll be taken to the calendar and payment page</p>
     <p>Final price will be confirmed a few days before the session – during consultation</p>
+    <div class="hero-buttons">
+      <button onclick="startOver()">Start Over</button>
+      <a onclick="navigateTo('booking')">Book Now</a>
+    </div>
   </div>
 
   <div id="info-a" class="step">
@@ -566,8 +568,12 @@
     <p><strong>Very small text or symbol</strong> – approx. €70</p>
     <p><strong>Small graphic or symbol with extra</strong> – approx. €100–150</p>
     <p><strong>More detailed small design</strong> – approx. €150–200</p>
-    <p>Deposit: €50</p>
+    <p>Deposit: €50 - The doposit is taken during booking process and guarantees the date to be booked. The total cost depends on the tattoo itself.</p>
     <p>Final price will be confirmed a few days before the session – during a short consultation</p>
+    <div class="hero-buttons">
+      <button onclick="startOver()">Start Over</button>
+      <a onclick="navigateTo('booking')">Book Now</a>
+    </div>
   </div>
 </section>
 
@@ -619,6 +625,10 @@
   <footer class="site-footer">
     <div class="footer-content">
       <p>&copy; 2025 Inkvitation Tattoo. All rights reserved.</p>
+      <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center;">
+        <span>Follow me on Instagram</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
+      </a>
     </div>
   </footer>
 
@@ -647,6 +657,17 @@
       else showStep('step4');
     }
 
+    function startOver() {
+      // Hide all steps
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+
+      // Show first step
+      document.getElementById('step1').classList.add('active');
+
+      // Reset all radio buttons
+      document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+    }
+
     function toggleMenu() {
       document.getElementById('main-nav').classList.toggle('active');
     }
@@ -662,6 +683,18 @@
       }
     }
     navigateTo('home');
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('#main-nav a'); // Adjust selector to match your structure
+     const navToggleButton = document.querySelector('.menu-toggle'); // e.g., hamburger checkbox or toggle button
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        console.log('asdasdasdsad')
+        navToggleButton.click()
+      });
+    });
+  });
   </script>
 </body>
 </html>
