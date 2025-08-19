@@ -219,12 +219,12 @@
 
     #booking-page iframe {
       width: 100%;
-      height: 650px;
+      height: 800px;
       border: none;
     }
 
     .bookin-container {
-      width: 500px;
+      width: 80%;
     }
 
     .about-content {
@@ -258,8 +258,8 @@
     }
 
     .contact-image img {
-      height: 500px;
-      max-width: 621px;
+      height: 400px;
+      max-width: 421px;
       border-radius: 10px;
     }
 
@@ -313,7 +313,7 @@
 
     .gallery-grid img {
       width: 90%;
-      height: auto;
+      height: 90%;
       border-radius: 10px;
       transition: transform 0.3s ease;
     }
@@ -340,6 +340,10 @@
       margin: 0 auto;
     }
 
+    .footer-icon{
+      margin-left: 1em;
+    }
+
     .step { 
       display: none; 
       padding: 20px; 
@@ -349,10 +353,16 @@
       border-radius: 8px; 
       box-shadow: 0 2px 12px rgba(0,0,0,0.2); 
     }
+    .step::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+      }
     .step.active { 
       display: flex; 
       justify-content: space-evenly;
       flex-direction: column;
+      overflow-y: scroll; /* Ensures vertical scrolling is possible */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer and Edge */
     }
 
     .button-next {
@@ -481,18 +491,51 @@
   <section id="booking-page" class="hero">
     <h1>Book a Session</h1>
     <div id="calendly-container" class="bookin-container">
+      <iframe src="https://calendly.com/inkvitationtattoo" title="Calendly Booking Widget"></iframe>
     </div>
   </section>
 
   <section id="gallery-page" class="hero gallery">
     <h1>Gallery</h1>
     <div class="gallery-grid">
-      <img src="pic1.jpg" alt="Tattoo 1" />
-      <img src="pic2.jpg" alt="Tattoo 2" />
-      <img src="pic3.jpg" alt="Tattoo 3" />
-      <img src="pic4.jpg" alt="Tattoo 4" />
-      <img src="pic5.jpg" alt="Tattoo 5" />
-      <img src="piv6.jpg" alt="Tattoo 6" />
+      <img src="konstattoo_1.jpg" alt="Tattoo 1" />
+      <img src="konstattoo_2.jpg" alt="Tattoo 2" />
+      <img src="konstattoo_3.jpg" alt="Tattoo 3" />
+      <img src="konstattoo_4.jpg" alt="Tattoo 4" />
+      <img src="konstattoo_5.jpg" alt="Tattoo 5" />
+      <img src="konstattoo_6.jpg" alt="Tattoo 6" />
+      <img src="konstattoo_7.jpg" alt="Tattoo 7" />
+      <img src="konstattoo_8.jpg" alt="Tattoo 8" />
+      <img src="konstattoo_9.jpg" alt="Tattoo 9" />
+      <img src="konstattoo_10.jpg" alt="Tattoo 10" />
+      <img src="konstattoo_12.jpg" alt="Tattoo 12" />
+      <img src="konstattoo_13.jpg" alt="Tattoo 13" />
+      <img src="14.jpg" alt="Tattoo 14" />
+      <img src="15.jpg" alt="Tattoo 15" />
+      <img src="16.jpg" alt="Tattoo 16" />
+      <img src="17.jpg" alt="Tattoo 17" />
+      <img src="18.jpg" alt="Tattoo 18" />
+      <img src="19.jpg" alt="Tattoo 19" />
+      <img src="20.jpg" alt="Tattoo 20" />
+      <img src="21.jpg" alt="Tattoo 21" />
+      <img src="22.jpg" alt="Tattoo 22" />
+      <img src="23.jpg" alt="Tattoo 23" />
+      <img src="24.jpg" alt="Tattoo 24" />
+      <img src="25.jpg" alt="Tattoo 25" />
+      <img src="26.jpg" alt="Tattoo 26" />
+      <img src="27.jpg" alt="Tattoo 27" />
+      <img src="28.jpg" alt="Tattoo 28" />
+      <img src="29.jpg" alt="Tattoo 29" />
+      <img src="30.jpg" alt="Tattoo 30" />
+      <img src="31.jpg" alt="Tattoo 31" />
+      <img src="32.jpg" alt="Tattoo 32" />
+      <img src="33.jpg" alt="Tattoo 33" />
+      <img src="34.jpg" alt="Tattoo 34" />
+      <img src="35.jpg" alt="Tattoo 35" />
+      <img src="36.jpg" alt="Tattoo 36" />
+      <img src="37.jpg" alt="Tattoo 37" />
+      <img src="38.jpg" alt="Tattoo 38" />
+      <img src="39.jpg" alt="Tattoo 39" />
     </div>
   </section>
 
@@ -556,7 +599,7 @@
     <p>Deposit: €100 - The doposit is taken during booking process and guarantees the date to be booked. The total cost depends on the tattoo itself.</p>
     <p>After choosing, you’ll be taken to the calendar and payment page</p>
     <p>Final price will be confirmed a few days before the session – during consultation</p>
-    <div class="hero-buttons">
+    <div class="button-container hero-buttons">
       <button onclick="startOver()">Start Over</button>
       <a onclick="navigateTo('booking')">Book Now</a>
     </div>
@@ -570,7 +613,7 @@
     <p><strong>More detailed small design</strong> – approx. €150–200</p>
     <p>Deposit: €50 - The doposit is taken during booking process and guarantees the date to be booked. The total cost depends on the tattoo itself.</p>
     <p>Final price will be confirmed a few days before the session – during a short consultation</p>
-    <div class="hero-buttons">
+    <div class="button-container hero-buttons">
       <button onclick="startOver()">Start Over</button>
       <a onclick="navigateTo('booking')">Book Now</a>
     </div>
@@ -580,19 +623,16 @@
   <section id="about-page" class="hero">
     <h1>Hygiene and Safety</h1>
     <p>
-      At <strong>INKVITATION TATTOO</strong>, we not only prioritize safety but also ​guarantee that your tattoo experience will be absolutely WOW! We use ​only single-use needles and top-quality tools, and our inks ensure colors ​that leave an impression. 😉
+      At <strong>INKVITATION TATTOO</strong>, your safety and well-being are our top priorities. We strictly adhere to the highest standards of hygiene and infection control, following all recommended guidelines for tattoo studios.
     </p>
     <p>
-      When it comes to aftercare, we also offer professional tattoo care products ​for sale. There's no room for cookie-cutter tattoos here – we create ​customized works of art tailored to your dreams. Forget about copying! ​Each tattoo with us is a unique masterpiece crafted especially for you.
+      Every needle and tube is single-use and disposed of safely after each session. All surfaces and equipment are thoroughly disinfected before and after every client. We use only premium, sterile inks and supplies to ensure both safety and vibrant results.
     </p>
     <p>
-      If you have old tattoos that you're not fond of anymore, don't stress! We ​cover up old designs with brand-new ones, so you can fall in love with ​your skin all over again.
+      Our studio is regularly inspected and maintained to exceed industry standards. We provide professional aftercare instructions and offer trusted tattoo care products to support proper healing.
     </p>
     <p>
-      Thinking about a special someone? We've got you covered. Gift them a <strong>​GIFT VOUCHER.</strong>
-    </p>
-    <p>
-      All of this takes place in a studio with the highest, most cutting-edge ​standards. Just come in, relax, and let us turn your tattoo dreams into ​reality!
+      Whether you’re getting a new tattoo or a cover-up, you can relax knowing your experience will be safe, clean, and comfortable. We are committed to creating custom artwork in a secure environment, so you can enjoy your tattoo with confidence.
     </p>
     <br>
   </section>
@@ -613,11 +653,14 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
         </a>
         <br />
-        <p><strong>Studio:</strong><br />
-        2 St Michael's Square,<br />
-        ​Townparks, Ballinasloe,<br />
-        Co.​ Galway,​<br />
-        H53 PH26​</p>
+        <p>Facebook</p>
+        <a href="https://www.facebook.com/Inkvitationtattoo/" target="_blank" style="display:inline-flex; align-items:center;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Instagram" style="width: 28px; height: 28px;">
+        </a>
+      </div>
+      </div>
+      <div style="margin-top:4em; border-radius:10px; overflow:hidden; min-width:450px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421.2193797492922!2d-8.219770574577922!3d53.32935249255919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485c694f91b95d83%3A0xef880f299b84f3bc!2sInkvitation%20Tattoo!5e0!3m2!1sen!2sie!4v1755608522158!5m2!1sen!2sie" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -627,7 +670,11 @@
       <p>&copy; 2025 Inkvitation Tattoo. All rights reserved.</p>
       <a href="https://instagram.com/konstattoo" target="_blank" style="display:inline-flex; align-items:center;">
         <span>Follow me on Instagram</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; height: 28px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="footer-icon" style="width: 28px; height: 28px;">
+      </a>
+      <a href="https://www.facebook.com/Inkvitationtattoo/" target="_blank" style="display:inline-flex; align-items:center;">
+        <span>Facebook</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"class="footer-icon"  alt="Facebook" style="width: 28px; height: 28px;">
       </a>
     </div>
   </footer>
@@ -690,7 +737,6 @@
 
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        console.log('asdasdasdsad')
         navToggleButton.click()
       });
     });
