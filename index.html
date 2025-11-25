@@ -522,6 +522,20 @@
       margin-bottom: 1rem;
       cursor: pointer;
     }
+    .voucher-container {
+      max-width:800px;
+      margin:1rem auto;
+      text-align:center;
+    }
+    .voucher-image {
+      width:100%;
+      height:auto;
+      max-width:100%;
+      border-radius:10px;
+      display:block;
+      margin:0 auto;
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
@@ -539,6 +553,7 @@
         <a onclick="navigateTo('about')">Hygiene and Safety</a>
         <a onclick="navigateTo('contact')">Contact Us</a>
         <a onclick="navigateTo('booking')" class="book-now-button">Book Now</a>
+        <a onclick="navigateTo('vouchers')" class="book-now-button">Vouchers</a>
         <a onclick="navigateTo('questionnaire')"  class="book-now-button">Find your session</a>
   </nav>
   </header>
@@ -733,6 +748,19 @@
     <br>
   </section>
 
+  <section id="vouchers-page" class="hero">
+      <h1>Vouchers</h1>
+      <p>Looking for a gift that actually means something? I’ve got two types of vouchers for you – a Christmas one and an all-occasion one. You pick the amount, pay easily through Revolut (link below), and I prepare the voucher and send it out by regular post. Usually the same day or the next morning, depending on the post office hours.</p>
+      <p>If you prefer the classic way, you can also swing by the studio and grab your voucher in person. Perfect for Christmas, birthdays, anniversaries or just “why not”. It always hits the spot. </p>
+      <p>Simple, quick and straight to the point. You buy it, I send it, someone gets a gift that actually matters</p>
+      <br>
+      <p><strong>Revolut payment link:</strong> <a href="https://revolut.me/inkvitationtattoo" target="_blank">http://revolut.me/konsek</a></p>
+      <br>
+      <div class="voucher-container">
+        <img src="voucher.jpeg" alt="Voucher" class="voucher-image">
+      </div>
+  </section>
+
   <section id="contact-page" class="hero">
     <div class="contact-container">
       <h1>Contact Us</h1>
@@ -817,7 +845,7 @@
     }
 
     function navigateTo(page) {
-      const pages = ['home-page', 'booking-page', 'gallery-page', 'about-page', 'contact-page','questionnaire-page'];
+      const pages = ['home-page', 'booking-page', 'gallery-page', 'about-page', 'contact-page','questionnaire-page', 'vouchers-page'];
       pages.forEach(p => document.getElementById(p).style.display = 'none');
 
       if (page === 'home') {
